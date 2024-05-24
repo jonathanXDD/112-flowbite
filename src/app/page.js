@@ -1,11 +1,26 @@
 
+/*
+ *@author jonathan chen <gmail> 
+*/
 import Link from "next/link";
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 import { Footer, FooterCopyright, FooterLink, FooterLinkGroup ,DarkThemeToggle} from "flowbite-react";
 import { Carousel } from "flowbite-react";
 import { Card } from "flowbite-react";
 
-
+const items=[{
+  corver:"",
+  name :"123",
+  des:"666",
+},{
+  corver:"",
+  name :"456",
+  des:"777",
+},{
+  corver:"",
+  name :"789",
+  des:"888",
+}];
 
 export default function Home() {
   return (
@@ -34,23 +49,34 @@ export default function Home() {
       <DarkThemeToggle/>
     </Navbar>
     </div>
-    <div className="h-55 sm:h-64 xl:h-80 2xl:h-96">
+    <div className="h-55 sm:h-screen xl:h-screen 2xl:h-screen">
       <Carousel>
-        <img src="https://vhx.imgix.net/criterionchannelchartersu/assets/ad353e5c-c570-482c-ab2b-9b7a13215602.jpg?auto=format%2Ccompress&fit=crop&h=720&q=75&w=1280" alt="..." />
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWq7qI0XyVN41egIS9AydJJ7YeckX5nBBaoqfqZnl-Cg&s" alt="..." />
-        <img src="https://flowbite.com/docs/images/carousel/carousel-3.svg" alt="..." />
-        <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
-        <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+        <img src="https://vhx.imgix.net/criterionchannelchartersu/assets/ad353e5c-c570-482c-ab2b-9b7a13215602.jpg?auto=format%2Ccompress&fit=crop&h=720&q=75&w=1280" alt="https://www.bam.org/film/2024/uncharted-baldwin-step" />
+        <img src="https://www.shutterstock.com/zh-Hant/blog/wp-content/uploads/sites/11/2021/07/0726cover.png?w=1250&h=960&crop=1" alt="https://www.shutterstock.com/zh-Hant/blog/inches-to-pixels-resize-image-quality" />
+        <img src="https://steam.oxxostudio.tw/webp/gimp/example/simple-keyer-mask-16.webp" alt="https://steam.oxxostudio.tw/category/gimp/example/simple-keyer-mask.html" />
+        <img src="https://img.ltn.com.tw/Upload/news/600/2018/11/23/phpYwQS3L.jpg" alt="https://news.ltn.com.tw/news/world/breakingnews/2621986" />
+        <img src="https://cdn.pixabay.com/photo/2023/12/08/23/46/cat-8438334_1280.jpg" alt="https://pixabay.com/zh/photos/cat-feline-asleep-cute-8438334/" />
       </Carousel>
     </div>
-    <Card href="#" className="max-w-sm">
-      <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
-      </h5>
-      <p className="font-normal text-gray-700 dark:text-gray-400">
-        Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-      </p>
-    </Card>
+    <div className="bd-white py-16">
+      <div className="container mx-auto grid grid-cols-4 gap-4">
+        {items.map(items =>
+            <Card href="#" className="max-w-sm" imgAlt={items.name} imgSrc={items.src}>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {items.name}
+            </h5>
+            <p className="font-normal text-gray-700 dark:text-gray-400">
+              {items.des}
+            </p>      
+            </Card>
+          )}
+    
+      
+    
+    </div>
+    </div>
+
+
     <Footer container>
     <FooterCopyright href="#" by="Flowbite™" year={2022} />
     <FooterLinkGroup>
