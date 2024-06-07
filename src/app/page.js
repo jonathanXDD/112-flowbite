@@ -2,14 +2,16 @@
 /*
  *@author jonathan chen <gmail> 
 */
+'use client';
 import Link from "next/link";
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarLink, NavbarToggle } from "flowbite-react";
 import { Footer, FooterCopyright, FooterLink, FooterLinkGroup ,DarkThemeToggle} from "flowbite-react";
 import { Carousel } from "flowbite-react";
 import { Card } from "flowbite-react";
 import CustomCard from "./Card";
+import { useState,useEffect } from "react";
 
-const items=[
+/*const items=[
   {
     "ScenicSpotID": "C1_376490000A_000001",
     "ScenicSpotName": "雲林布袋戲館",
@@ -832,9 +834,28 @@ const items=[
     "UpdateTime": "2024-05-31T03:14:56+08:00"
   }
 ];
-
+*/
+const tonkenURL='https://tdx.transportdata.tw/auth/realms/TDXConnect/protocol/openid-connect/token';
+const apiURL='https://tdx.transportdata.tw/api/basic/v2/Tourism/ScenicSpot/YunlinCounty';
 export default function Home() {
+const[items,setItems]=useState([]);
+useEffect(()=>{
+  const getonken=async()=>{
+  const clientID=process.env.TDX_Client_ID;
+  const clientCR=process.env.TDX_Client_SECRET;
 
+  const tonkenProgram = new URLSearchParams();
+  tonkenProgram.append('grant_type','client_credentials')
+  tonkenProgram.append('client_id',clientID)
+  tonkenProgram.append('client_id',clientCR)
+  const  tonkenResponse=await fetch(tonkenURL,{
+    method:'POST',
+    headers:{
+      'content-type':'content-type: application/x-www-form-urlencoded' 
+    }
+  });
+}
+},[])
   return (
     <>
     <div className="bg-[#93C5FD]">
